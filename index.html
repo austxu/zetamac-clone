@@ -255,11 +255,7 @@
         }
 
         .game-strip #game-content-area {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            /* spacing between text and input */
+            display: inline-block;
         }
 
         .game-strip .question-text,
@@ -267,18 +263,32 @@
             font-size: 36px;
             color: var(--text-color);
             white-space: nowrap;
+            vertical-align: middle;
         }
 
         #answer-input {
             font-size: 36px;
             font-family: inherit;
-            width: 180px;
+            width: 156px;
             border: 1px solid var(--input-border);
-            outline: none;
+            border-radius: 4px;
             background-color: var(--input-bg);
             color: var(--text-color);
             text-align: left;
-            padding: 0 10px;
+            padding: 4px 8px;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+
+        #answer-input:focus {
+            outline: 2px solid #007bff;
+            outline-offset: -1px;
+            border-color: #007bff;
+        }
+
+        body.dark-mode #answer-input:focus {
+            outline-color: #4dabf7;
+            border-color: #4dabf7;
         }
 
         /* Results inside the strip */
@@ -415,7 +425,7 @@
 
             <div class="game-strip" id="game-strip">
                 <!-- Game mode: question = input -->
-                <div id="game-content-area" style="display:flex; align-items:center; gap:10px;">
+                <div id="game-content-area">
                     <span class="question-text" id="question-text"></span>
                     <span class="equals-sign">=</span>
                     <input type="number" id="answer-input" autocomplete="off">
