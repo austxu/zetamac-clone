@@ -494,6 +494,15 @@
         setTimeout(drawGraph, 50);
         window.addEventListener('resize', drawGraph);
 
+        // Auto-start game on page reload (but not first open)
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('zetamac_session_active')) {
+                startGame();
+            } else {
+                sessionStorage.setItem('zetamac_session_active', 'true');
+            }
+        });
+
         // --- CANVAS INTERACTION ---
         canvas.addEventListener('mousemove', (e) => {
             if (!history.length) return;
