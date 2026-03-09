@@ -484,11 +484,6 @@
         setTimeout(drawGraph, 50);
         window.addEventListener('resize', drawGraph);
 
-        // Instantly start the game when the page loads
-        window.addEventListener('DOMContentLoaded', () => {
-            startGame();
-        });
-
         // --- CANVAS INTERACTION ---
         canvas.addEventListener('mousemove', (e) => {
             if (!history.length) return;
