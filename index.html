@@ -113,8 +113,10 @@
         }
 
         #start-screen .gray-section {
-            margin-bottom: 15px;
-            padding: 15px;
+            margin: 0 auto 15px auto;
+            padding: 20px;
+            width: 440px;
+            max-width: 100%;
         }
 
         /* --- INTERNAL SETTINGS STYLING --- */
@@ -254,42 +256,22 @@
             background-color: #333;
         }
 
-        .game-strip #game-content-area {
-            display: inline-block;
-        }
+
 
         .game-strip .question-text,
         .game-strip .equals-sign {
             font-size: 36px;
             color: var(--text-color);
             white-space: nowrap;
-            vertical-align: middle;
         }
 
         #answer-input {
             font-size: 36px;
             font-family: inherit;
-            width: 156px;
-            border: 1px solid var(--input-border);
-            border-radius: 4px;
-            background-color: var(--input-bg);
-            color: var(--text-color);
-            text-align: left;
-            padding: 4px 8px;
-            vertical-align: middle;
-            margin-left: 4px;
+            width: 180px;
         }
 
-        #answer-input:focus {
-            outline: 2px solid #007bff;
-            outline-offset: -1px;
-            border-color: #007bff;
-        }
-
-        body.dark-mode #answer-input:focus {
-            outline-color: #4dabf7;
-            border-color: #4dabf7;
-        }
+        /* (Focus outlines removed to match default browser behavior like Zetamac) */
 
         /* Results inside the strip */
         .result-score {
@@ -428,7 +410,7 @@
                 <div id="game-content-area">
                     <span class="question-text" id="question-text"></span>
                     <span class="equals-sign">=</span>
-                    <input type="number" id="answer-input" autocomplete="off">
+                    <input type="text" id="answer-input" autocomplete="off">
                 </div>
                 <!-- Results mode: score + links -->
                 <div id="results-area" style="display:none;">
@@ -623,17 +605,12 @@
                     a = rInt(addMin1, addMax1);
                     b = rInt(addMin2, addMax2);
                     let sum = a + b;
-                    text = `${sum} - ${a}`;
+                    text = `${sum} – ${a}`;
                     currentAnswer = b;
                     break;
                 case 'mult':
-                    if (Math.random() > 0.5) {
-                        a = rInt(multMin1, multMax1);
-                        b = rInt(multMin2, multMax2);
-                    } else {
-                        a = rInt(multMin2, multMax2);
-                        b = rInt(multMin1, multMax1);
-                    }
+                    a = rInt(multMin1, multMax1);
+                    b = rInt(multMin2, multMax2);
                     text = `${a} × ${b}`;
                     currentAnswer = a * b;
                     break;
